@@ -11,17 +11,20 @@ import lk.ac.mrt.cse.dbs.simpleexpensemanager.ui.MainActivity;
 
 public class PersistentExpenseManager extends ExpenseManager {
 
-    private DataBaseHelper dataBaseHelper;
+    MainActivity mainActivity ;
 
-    public PersistentExpenseManager(DataBaseHelper dataBaseHelper)  {
+    public PersistentExpenseManager(MainActivity mainActivity)  {
+        this.mainActivity = mainActivity ;
         setup();
-        this.dataBaseHelper = dataBaseHelper ;
+//        this.dataBaseHelper = dataBaseHelper ;
     }
 
     @Override
     public void setup()  {
 
-        TransactionDAO persistentMemoryTransactionDAO = new PersistentMemoryTransactionDAO();
+        DataBaseHelper dataBaseHelper = new DataBaseHelper(mainActivity) ;
+
+        TransactionDAO persistentMemoryTransactionDAO = new PersistentMemoryTransactionDAO(dataBaseHelper);
         setTransactionsDAO(persistentMemoryTransactionDAO);
         AccountDAO persistentMemoryAccountDAO = new PersistentMemoryAccountDAO(dataBaseHelper);
         setAccountsDAO(persistentMemoryAccountDAO);

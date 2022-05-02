@@ -73,8 +73,8 @@ public class  MainActivity extends AppCompatActivity {
 
 
 
-            DataBaseHelper dataBaseHelper = new DataBaseHelper(MainActivity.this);
-            expenseManager = new PersistentExpenseManager(dataBaseHelper);
+//            DataBaseHelper dataBaseHelper = new DataBaseHelper(MainActivity.this);
+            expenseManager = new PersistentExpenseManager(this);
 
 
 
