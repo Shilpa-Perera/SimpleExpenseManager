@@ -23,9 +23,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import lk.ac.mrt.cse.dbs.simpleexpensemanager.R;
 import lk.ac.mrt.cse.dbs.simpleexpensemanager.control.ExpenseManager;
+import lk.ac.mrt.cse.dbs.simpleexpensemanager.data.model.Account;
 
 import static lk.ac.mrt.cse.dbs.simpleexpensemanager.Constants.EXPENSE_MANAGER;
 /**
@@ -38,8 +40,10 @@ public class AddAccountFragment extends Fragment implements View.OnClickListener
     private EditText accountHolderName;
     private EditText initialBalance;
     private Button addAccount;
+    private  Account newAccount ;
 
-    public static AddAccountFragment newInstance(ExpenseManager expenseManager) {
+
+    public static AddAccountFragment newInstance (ExpenseManager expenseManager) {
         AddAccountFragment addAccountFragment = new AddAccountFragment();
         Bundle args = new Bundle();
         args.putSerializable(EXPENSE_MANAGER, expenseManager);
@@ -99,8 +103,13 @@ public class AddAccountFragment extends Fragment implements View.OnClickListener
                             Double.parseDouble(initialBalanceStr));
                 }
                 cleanUp();
+                Toast.makeText(getActivity(), "Account adding unsuccess", Toast.LENGTH_SHORT).show();
                 break;
         }
+
+
+
+
     }
 
     private void cleanUp() {
