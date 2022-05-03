@@ -103,7 +103,7 @@ public class AddAccountFragment extends Fragment implements View.OnClickListener
                             Double.parseDouble(initialBalanceStr));
                 }
                 cleanUp();
-                Toast.makeText(getActivity(), "Account adding unsuccess", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Account Added Successfully", Toast.LENGTH_SHORT).show();
                 break;
         }
 
