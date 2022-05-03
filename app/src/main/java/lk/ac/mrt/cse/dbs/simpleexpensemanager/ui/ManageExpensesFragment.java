@@ -118,7 +118,7 @@ public class ManageExpensesFragment extends Fragment implements View.OnClickList
                                     }
                                 }).setIcon(android.R.drawable.ic_dialog_alert).show();
                     }
-                    Toast.makeText(getActivity(), "Updated", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Log Updated", Toast.LENGTH_SHORT).show();
                 }
                 amount.getText().clear();
                 break;

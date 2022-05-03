@@ -16,7 +16,6 @@ public class PersistentExpenseManager extends ExpenseManager {
     public PersistentExpenseManager(MainActivity mainActivity)  {
         this.mainActivity = mainActivity ;
         setup();
-//        this.dataBaseHelper = dataBaseHelper ;
     }
 
     @Override

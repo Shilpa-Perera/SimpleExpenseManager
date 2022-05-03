@@ -40,7 +40,7 @@ public class AddAccountFragment extends Fragment implements View.OnClickListener
     private EditText accountHolderName;
     private EditText initialBalance;
     private Button addAccount;
-    private  Account newAccount ;
+
 
 
     public static AddAccountFragment newInstance (ExpenseManager expenseManager) {
@@ -103,7 +103,7 @@ public class AddAccountFragment extends Fragment implements View.OnClickListener
                             Double.parseDouble(initialBalanceStr));
                 }
                 cleanUp();
-                Toast.makeText(getActivity(), "Account Added Successfully", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Success", Toast.LENGTH_SHORT).show();
                 break;
         }
 
