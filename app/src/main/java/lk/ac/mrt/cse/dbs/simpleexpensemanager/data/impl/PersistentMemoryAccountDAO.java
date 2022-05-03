@@ -132,7 +132,7 @@ public class PersistentMemoryAccountDAO implements AccountDAO {
         }
         String updateBalanceQuery = "UPDATE ACCOUNTS SET BALANCE ="
                 +account.getBalance() + " WHERE ACCOUNT_NUMBER = '"
-                +accountNo+125+ "'" ;
+                +accountNo+ "'" ;
         database.execSQL(updateBalanceQuery);
 
 

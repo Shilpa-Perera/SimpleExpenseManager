@@ -30,6 +30,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import lk.ac.mrt.cse.dbs.simpleexpensemanager.R;
 import lk.ac.mrt.cse.dbs.simpleexpensemanager.control.ExpenseManager;
@@ -117,6 +118,7 @@ public class ManageExpensesFragment extends Fragment implements View.OnClickList
                                     }
                                 }).setIcon(android.R.drawable.ic_dialog_alert).show();
                     }
+                    Toast.makeText(getActivity(), "Updated", Toast.LENGTH_SHORT).show();
                 }
                 amount.getText().clear();
                 break;

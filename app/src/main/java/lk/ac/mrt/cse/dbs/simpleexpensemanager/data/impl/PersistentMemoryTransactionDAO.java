@@ -4,6 +4,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -33,7 +34,7 @@ public class PersistentMemoryTransactionDAO implements TransactionDAO {
     public void logTransaction(Date date, String accountNo, ExpenseType expenseType, double amount) {
 
 
-        DateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy");
+        DateFormat dateFormat = new SimpleDateFormat("dd-M-yyyy");
         String strdate = dateFormat.format(date);
         String logTransactionsQuery = "INSERT INTO TRANSACTIONS (ACCOUNT_NUMBER,TYPE,AMOUNT,DATE) VALUES ( "+
                 "'" + accountNo+ "'," +
@@ -54,15 +55,21 @@ public class PersistentMemoryTransactionDAO implements TransactionDAO {
         Cursor cursor = database.rawQuery(getTransactionsQuery , null ) ;
         if(cursor.moveToFirst()){
             do{
-                int id = cursor.getInt(1);
-                String account_num = cursor.getString(2) ;
-                String type = cursor.getString(3);
-                Double amount = cursor.getDouble(4);
-                String date = cursor.getString(5);   // Have a problem here
+                int id = cursor.getInt(0);
+                String account_num = cursor.getString(1) ;
+                String type = cursor.getString(2);
+                Double amount = cursor.getDouble(3);
+                String date = cursor.getString(4);   // Have a problem here
 
 
+                try {
+                    Date date1 =new SimpleDateFormat("dd-M-yyyy").parse(date);
+                    allTransactions.add(new Transaction(date1,account_num,ExpenseType.valueOf(type),amount)) ;
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
 
-//                allTransactions.add(new Transaction(date,account_num,type,amount)) ;
+
 
             } while (cursor.moveToNext());
         }
@@ -76,6 +83,13 @@ public class PersistentMemoryTransactionDAO implements TransactionDAO {
 
     @Override
     public List<Transaction> getPaginatedTransactionLogs(int limit) {
-        return new ArrayList<>();
+
+        int size = getAllTransactionLogs().size();
+        if (size <= limit) {
+            return getAllTransactionLogs();
+        }
+        // return the last <code>limit</code> number of transaction logs
+        return getAllTransactionLogs().subList(size - limit, size);
     }
+
 }
