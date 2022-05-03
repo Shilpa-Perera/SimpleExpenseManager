@@ -12,7 +12,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String BANK = "BANK";
 
     public DataBaseHelper(@Nullable Context context) {
-        super(context, "ExpenseManager.db", null ,1 );
+        super(context, "190451P.db", null ,1 );
     }
 
     // This is called the first time database is accessed
