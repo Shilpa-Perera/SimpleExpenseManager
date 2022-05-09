@@ -22,6 +22,7 @@ public class PersistentMemoryAccountDAO implements AccountDAO {
     public static final String BALANCE = "BALANCE";
     public static final String ACCOUNT_HOLDER = "ACCOUNT_HOLDER";
     public static final String BANK = "BANK";
+
     private DataBaseHelper db ;
     private SQLiteDatabase database ;
     public PersistentMemoryAccountDAO(DataBaseHelper dataBaseHelper) {

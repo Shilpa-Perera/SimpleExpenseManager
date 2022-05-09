@@ -16,14 +16,42 @@
 
 package lk.ac.mrt.cse.dbs.simpleexpensemanager;
 
-import android.app.Application;
-import android.test.ApplicationTestCase;
+import static org.junit.Assert.assertTrue;
+
+import android.content.Context;
+
+import androidx.test.core.app.ApplicationProvider;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import java.util.List;
+
+import lk.ac.mrt.cse.dbs.simpleexpensemanager.control.ExpenseManager;
+import lk.ac.mrt.cse.dbs.simpleexpensemanager.control.PersistentExpenseManager;
 
 /**
  * <a href="http://d.android.com/tools/testing/testing_android.html">Testing Fundamentals</a>
  */
-public class ApplicationTest extends ApplicationTestCase<Application> {
-    public ApplicationTest() {
-        super(Application.class);
+public class ApplicationTest {
+
+    private ExpenseManager expenseManager;
+
+    @Before
+    public void testSetUp() {
+        Context context = ApplicationProvider.getApplicationContext();
+        expenseManager = new PersistentExpenseManager(context);
     }
+
+    @Test
+    public void testAddAccount() {
+        // Adding and Retrieving data
+        expenseManager.addAccount("12345A", "Yoda Bank", "Anakin Skywalker", 10000.0);
+        expenseManager.addAccount("78945Z", "Clone BC", "Obi-Wan Kenobi", 80000.0);
+        List<String> accountNumberList = expenseManager.getAccountNumbersList();
+        assertTrue(accountNumberList.contains("12345A"));
+        assertTrue(accountNumberList.contains("78945Z"));
+    }
+
+
 }

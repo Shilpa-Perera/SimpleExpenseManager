@@ -1,19 +1,19 @@
 package lk.ac.mrt.cse.dbs.simpleexpensemanager.control;
 
-import lk.ac.mrt.cse.dbs.simpleexpensemanager.control.exception.ExpenseManagerException;
+import android.content.Context;
+
 import lk.ac.mrt.cse.dbs.simpleexpensemanager.data.AccountDAO;
 import lk.ac.mrt.cse.dbs.simpleexpensemanager.data.TransactionDAO;
 import lk.ac.mrt.cse.dbs.simpleexpensemanager.data.dataBase.DataBaseHelper;
-import lk.ac.mrt.cse.dbs.simpleexpensemanager.data.impl.InMemoryTransactionDAO;
 import lk.ac.mrt.cse.dbs.simpleexpensemanager.data.impl.PersistentMemoryAccountDAO;
 import lk.ac.mrt.cse.dbs.simpleexpensemanager.data.impl.PersistentMemoryTransactionDAO;
 import lk.ac.mrt.cse.dbs.simpleexpensemanager.ui.MainActivity;
 
 public class PersistentExpenseManager extends ExpenseManager {
 
-    MainActivity mainActivity ;
+    Context mainActivity ;
 
-    public PersistentExpenseManager(MainActivity mainActivity)  {
+    public PersistentExpenseManager(Context mainActivity)  {
         this.mainActivity = mainActivity ;
         setup();
     }

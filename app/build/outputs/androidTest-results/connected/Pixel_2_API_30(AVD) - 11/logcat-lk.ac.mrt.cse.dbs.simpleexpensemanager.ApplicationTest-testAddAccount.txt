@@ -1,0 +1,2 @@
+05-10 01:42:05.624 14914 14936 I TestRunner: started: testAddAccount(lk.ac.mrt.cse.dbs.simpleexpensemanager.ApplicationTest)
+05-10 01:42:05.642 14914 14936 I TestRunner: finished: testAddAccount(lk.ac.mrt.cse.dbs.simpleexpensemanager.ApplicationTest)
