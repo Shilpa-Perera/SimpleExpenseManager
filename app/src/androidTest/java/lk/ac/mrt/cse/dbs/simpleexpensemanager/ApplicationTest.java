@@ -16,19 +16,30 @@
 
 package lk.ac.mrt.cse.dbs.simpleexpensemanager;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import android.content.Context;
 
 import androidx.test.core.app.ApplicationProvider;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import lk.ac.mrt.cse.dbs.simpleexpensemanager.control.ExpenseManager;
 import lk.ac.mrt.cse.dbs.simpleexpensemanager.control.PersistentExpenseManager;
+import lk.ac.mrt.cse.dbs.simpleexpensemanager.data.exception.InvalidAccountException;
+import lk.ac.mrt.cse.dbs.simpleexpensemanager.data.model.Account;
+import lk.ac.mrt.cse.dbs.simpleexpensemanager.data.model.ExpenseType;
+import lk.ac.mrt.cse.dbs.simpleexpensemanager.data.model.Transaction;
 
 /**
  * <a href="http://d.android.com/tools/testing/testing_android.html">Testing Fundamentals</a>
@@ -46,14 +57,54 @@ public class ApplicationTest {
     @Test
     public void testAddAccount() {
         // Adding Data
-        expenseManager.addAccount("12345A", "Yoda Bank", "Anakin Skywalker", 10000.0);
-        expenseManager.addAccount("78945Z", "Clone BC", "Obi-Wan Kenobi", 80000.0);
+
+       // expenseManager.addAccount("12345A", "Yoda Bank", "Anakin Skywalker", 10000.0);
+        //expenseManager.addAccount("78945Z", "Clone BC", "Obi-Wan Kenobi", 80000.0);
         // Retrieving Data
-        List<String> accountNumberList = expenseManager.getAccountNumbersList();
+        //List<String> accountNumberList = expenseManager.getAccountNumbersList();
 
         // Checking
-        assertTrue(accountNumberList.contains("12345A"));
-        assertTrue(accountNumberList.contains("78945Z"));
+        // assertTrue(accountNumberList.contains("12345A"));
+        // assertTrue(accountNumberList.contains("78945Z"));
+        Account account_1 = new Account("12345A", "Yoda Bank", "Anakin Skywalker", 10000.0);
+        expenseManager.getAccountsHolder().addAccount(account_1);
+
+        Account account_2 = new Account("78945Z", "Clone BC", "Obi-Wan Kenobi", 80000.0) ;
+        expenseManager.getAccountsHolder().addAccount(account_2);
+
+        try {
+            Account account_11 = expenseManager.getAccountsDAO().getAccount("12345A") ;
+            Account account_21 = expenseManager.getAccountsDAO().getAccount("78945Z") ;
+            assertNotNull(account_11);
+            assertNotNull(account_21);
+        } catch (InvalidAccountException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void testLogTransaction(){
+
+        String sDate1="10-5-2022";
+        Date date1= null;
+        try {
+            date1 = new SimpleDateFormat("dd-M-yyyy").parse(sDate1);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        expenseManager.getTransactionsHolder().logTransaction(date1,"12345A", ExpenseType.INCOME,500.0);
+        List<Transaction> allTransactions = expenseManager.getTransactionsHolder().getAllTransactionLogs();
+        assertEquals(allTransactions.get(0).getAccountNo(),"12345A");
+
+    }
+
+    @After
+
+    public void removeData() throws InvalidAccountException {
+
+        expenseManager.getAccountsHolder().removeAccount("12345A");
+        expenseManager.getAccountsHolder().removeAccount("78945Z");
+
     }
 
 

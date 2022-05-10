@@ -137,7 +137,7 @@ public class PersistentMemoryAccountDAO implements AccountDAO {
             String msg = "Account " + accountNo + " is invalid.";
             throw new InvalidAccountException(msg);
         }
-        String removeAccountQuery = "DELETE FROM " + ACCOUNTS + " WHERE " + ACCOUNT_NUMBER + " =" + accountNo ;
+        String removeAccountQuery = "DELETE FROM " + ACCOUNTS + " WHERE " + ACCOUNT_NUMBER + " = ' " + accountNo + "'";
         database.execSQL(removeAccountQuery);
 
     }
