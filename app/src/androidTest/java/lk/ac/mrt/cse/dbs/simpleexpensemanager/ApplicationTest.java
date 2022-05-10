@@ -45,10 +45,13 @@ public class ApplicationTest {
 
     @Test
     public void testAddAccount() {
-        // Adding and Retrieving data
+        // Adding Data
         expenseManager.addAccount("12345A", "Yoda Bank", "Anakin Skywalker", 10000.0);
         expenseManager.addAccount("78945Z", "Clone BC", "Obi-Wan Kenobi", 80000.0);
+        // Retrieving Data
         List<String> accountNumberList = expenseManager.getAccountNumbersList();
+
+        // Checking
         assertTrue(accountNumberList.contains("12345A"));
         assertTrue(accountNumberList.contains("78945Z"));
     }

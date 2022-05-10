@@ -1,7 +1,7 @@
 
-Ó
-d
-ApplicationTest&lk.ac.mrt.cse.dbs.simpleexpensemanagertestAddAccount2•ëå“€º¦Ó:–ëå“Àå¨"å
+Ô
+e
+ApplicationTest&lk.ac.mrt.cse.dbs.simpleexpensemanagertestAddAccount2”×è“À â³:”×è“À±±ù"å
 
 logcatandroidÏ
 ÌC:\Users\laksa\StudioProjects\SimpleExpenseManager\app\build\outputs\androidTest-results\connected\Pixel_2_API_30(AVD) - 11\logcat-lk.ac.mrt.cse.dbs.simpleexpensemanager.ApplicationTest-testAddAccount.txt"¨
