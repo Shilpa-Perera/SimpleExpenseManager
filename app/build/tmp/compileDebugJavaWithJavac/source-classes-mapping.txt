@@ -7,11 +7,11 @@ lk/ac/mrt/cse/dbs/simpleexpensemanager/control/PersistentExpenseManager.java
  lk.ac.mrt.cse.dbs.simpleexpensemanager.control.PersistentExpenseManager
 lk/ac/mrt/cse/dbs/simpleexpensemanager/data/dataBase/DataBaseHelper.java
  lk.ac.mrt.cse.dbs.simpleexpensemanager.data.dataBase.DataBaseHelper
+lk/ac/mrt/cse/dbs/simpleexpensemanager/ui/AddAccountFragment.java
+ lk.ac.mrt.cse.dbs.simpleexpensemanager.ui.AddAccountFragment
 lk/ac/mrt/cse/dbs/simpleexpensemanager/ui/MainActivity.java
  lk.ac.mrt.cse.dbs.simpleexpensemanager.ui.MainActivity
  lk.ac.mrt.cse.dbs.simpleexpensemanager.ui.MainActivity$SectionsPagerAdapter
-lk/ac/mrt/cse/dbs/simpleexpensemanager/ui/AddAccountFragment.java
- lk.ac.mrt.cse.dbs.simpleexpensemanager.ui.AddAccountFragment
 lk/ac/mrt/cse/dbs/simpleexpensemanager/control/ExpenseManager.java
  lk.ac.mrt.cse.dbs.simpleexpensemanager.control.ExpenseManager
 lk/ac/mrt/cse/dbs/simpleexpensemanager/ui/ExpenseLogsFragment.java
